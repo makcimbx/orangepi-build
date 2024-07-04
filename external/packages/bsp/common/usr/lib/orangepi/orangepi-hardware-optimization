@@ -354,6 +354,15 @@ prepare_board() {
 			rfkill unblock all
 			/usr/bin/hciattach_opi -n -s 1500000 /dev/ttyBT0 sprd &
 			;;
+		orangepi4a)
+			echo usb_host > /sys/devices/platform/soc@3000000/10.usbc0/otg_role
+			chmod 666 /dev/vipcore
+			tinymix -D 0 23 1
+			tinymix -D 0 26 1
+			rfkill unblock all
+			/usr/bin/brcm_patchram_plus --enable_hci --no2bytes --tosleep 200000 \
+				--baudrate 1500000 --patchram /lib/firmware/BCM4345C5.hcd /dev/ttyAS1 &
+			;;
 		orangepicm4|orangepi3b)
 			echo host > /sys/devices/platform/fe8a0000.usb2-phy/otg_mode
 			if [[ -c /dev/mpp_service ]]; then
