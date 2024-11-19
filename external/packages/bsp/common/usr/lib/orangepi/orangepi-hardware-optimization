@@ -201,14 +201,14 @@ prepare_board() {
 				tinymix -D ${es8388_card} 37 1
 
 				rfkill unblock all
-				brcm_patchram_plus --bd_addr_rand --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
+				brcm_patchram_plus --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
 				        --baudrate 1500000 --patchram /lib/firmware/BCM4345C0.hcd /dev/ttyS9 &
 
 			elif [[ $BOARD =~ orangepi5max|orangepi5ultra ]]; then
 
 				rfkill unblock all
 				sleep 2
-				brcm_patchram_plus --bd_addr_rand --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
+				brcm_patchram_plus --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
 				        --baudrate 1500000 --patchram /lib/firmware/SYN43711A0.hcd /dev/ttyS7 &
 			fi
 			;;
@@ -388,11 +388,11 @@ prepare_board() {
 
 			if [[ "${wifi_chip}" == "ap6256" && "${bt_status}" == "okay" ]]; then
 				rfkill unblock all
-				brcm_patchram_plus --bd_addr_rand --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
+				brcm_patchram_plus --enable_hci --no2bytes --use_baudrate_for_download --tosleep 200000 \
 				        --baudrate 1500000 --patchram /lib/firmware/BCM4345C0.hcd /dev/ttyS1 &
 			else
 				rfkill unblock all
-				/usr/bin/hciattach_opi -n -s 1500000 /dev/ttyBT0 sprd &
+				(while [ ! -e /dev/ttyBT0 ]; do sleep 1; done; hciattach_opi -n -s 1500000 /dev/ttyBT0 sprd) &
 
 			fi
 			;;
