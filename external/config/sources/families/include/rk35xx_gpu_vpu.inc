@@ -84,6 +84,8 @@ rk35xx_gpu_vpu_tweaks()
 			chroot $SDCARD /bin/bash -c "rm /usr/lib/aarch64-linux-gnu/dri/*.so;mv /*.so /usr/lib/aarch64-linux-gnu/dri/"
 		fi
 
+		[[ ${RELEASE} =~ jammy|focal ]] && run_on_sdcard "apt install -y cheese"
+
 		apply_common_operations() {
 			chroot $SDCARD /bin/bash -c "chmod o+x /usr/lib/dbus-1.0/dbus-daemon-launch-helper"
 			chroot $SDCARD /bin/bash -c "sed -i '5aexport LD_PRELOAD=libdrm-cursor.so.1' /usr/bin/X"
