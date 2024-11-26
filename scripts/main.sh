@@ -457,7 +457,7 @@ if [[ ${IGNORE_UPDATES} != yes ]]; then
 
 	fi
 
-	if [[ ${BOARD} =~ orangepi4|orangepi4-lts|orangepi800 && $RELEASE =~ focal|buster|bullseye|bookworm ]]; then
+	if [[ "${BOARD}x" =~ orangepi4x|orangepi4-ltsx|orangepi800x && $RELEASE =~ focal|buster|bullseye|bookworm ]]; then
 
 		[[ ${BUILD_OPT} == image ]] && fetch_from_repo "https://github.com/orangepi-xunlong/rk-rootfs-build.git" "${EXTER}/cache/sources/rk-rootfs-build-${RELEASE}" "branch:rk-rootfs-build-${RELEASE}"
 
@@ -475,13 +475,19 @@ if [[ ${IGNORE_UPDATES} != yes ]]; then
 
 	fi
 
+	if [[ ${BOARDFAMILY} == "sun55iw3" && $RELEASE =~ bookworm|jammy ]]; then
+
+		[[ ${BUILD_OPT} == image ]] && fetch_from_repo "https://github.com/orangepi-xunlong/rk-rootfs-build.git" "${EXTER}/cache/sources/t527_packages" "branch:t527_packages"
+
+	fi
+
 	if [[ ${BOARD} =~ orangepi3|orangepi3-lts && $RELEASE =~ bullseye && $BRANCH == current ]]; then
 
 		[[ ${BUILD_OPT} == image ]] && fetch_from_repo "https://github.com/orangepi-xunlong/rk-rootfs-build.git" "${EXTER}/cache/sources/ffmpeg_kodi_${RELEASE}" "branch:ffmpeg_kodi_${RELEASE}"
 
 	fi
 
-	if [[ ${BOARD} =~ orangepi4|orangepi4-lts|orangepi800 && $RELEASE =~ jammy && $BRANCH == next ]]; then
+	if [[ "${BOARD}x" =~ orangepi4x|orangepi4-ltsx|orangepi800x && $RELEASE =~ jammy && $BRANCH == next ]]; then
 
 		[[ ${BUILD_OPT} == image ]] && fetch_from_repo "https://github.com/orangepi-xunlong/rk-rootfs-build.git" "${EXTER}/cache/sources/ffmpeg_kodi_${RELEASE}" "branch:ffmpeg_kodi_${RELEASE}"
 

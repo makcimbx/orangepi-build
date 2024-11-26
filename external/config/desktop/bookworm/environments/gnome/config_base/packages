@@ -24,6 +24,9 @@ gnome-system-monitor
 gnome-terminal
 gnome-session
 gnome-shell
+gstreamer1.0-packagekit
+gstreamer1.0-plugins-base-apps
+gstreamer1.0-pulseaudio
 inputattach
 libnotify-bin
 libpulsedsp
