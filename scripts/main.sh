@@ -224,7 +224,7 @@ if [[ -z $BOARD ]]; then
 	#options+=("orangepilite2"		"Allwinner H6 quad core 1GB RAM WiFi/BT USB3")
 	#options+=("orangepioneplus"		"Allwinner H6 quad core 1GB RAM GBE")
 	options+=("orangepizero2"		"Allwinner H616 quad core 512MB/1GB RAM WiFi/BT GBE SPI")
-	#options+=("orangepizero2-b"		"Allwinner H616 quad core 512MB/1GB RAM WiFi/BT GBE SPI")
+	options+=("orangepizero2-b"		"Allwinner Legacy H616 quad core 512MB/1GB RAM WiFi/BT GBE SPI")
 	#options+=("orangepizero2-lts"           "Allwinner H616 quad core 1.5GB RAM WiFi/BT GBE SPI")
 	options+=("orangepizero3"		"Allwinner H618 quad core 1GB/1.5GB/2GB/4GB RAM WiFi/BT GBE SPI")
 	options+=("orangepizero2w"		"Allwinner H618 quad core 1GB/1.5GB/2GB/4GB RAM WiFi/BT SPI")
